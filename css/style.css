@@ -191,7 +191,7 @@ html{
     margin-top: 0px;
    }
   /* ************************************ */
-            /* Product display */
+            /* Political Party display */
   .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -341,7 +341,7 @@ html{
     margin-top: 53px;
   }
   
-  /* Product  */
+  /* Parties  */
   
   .description p{
     color: #9b8b85;
@@ -365,7 +365,7 @@ html{
     border-radius: 10px;
   }
   
-  /* ************ Instock Badge  *************** */
+  /* ************  Badges  *************** */
   
   .ribbon {
     width: 120px;

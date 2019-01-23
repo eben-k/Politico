@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Politico | Vote</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Muli:200i,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="css/slider.css"> -->
+    <link rel="stylesheet" href="css/modal.css">
+</head>
+
+<body>
+    <header id="header">
+        <nav>
+            <a href="index.html">
+                <div class="logo"><i class="fab fa-pinterest-p"></i>olitico
+            </a>
+            <ul>
+
+                <li><a href="#"><i class="fas fa-user-lock"></i></i> User</a></li>
+                <li><a href="index.html"><i class="fas fa-sign-in-alt"></i> Logout </a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="page" class="admin-page">
+
+        <div class="dashboard card col-2">
+            <h3> Menu</h3>
+            <p class="active"><a href="#">Political Parties</a></p>
+            <hr>
+            <p class="active"><a href="#">Government Offices</a></p>
+            <hr>
+            <p class="active"><a href="#">Candidates</a></p>
+
+        </div>
+        <div class="col-8">
+            <div class="col-11">
+                    
+                </div>
+               
+                
+                                
+               <!-- voting modal -->
+               <div class="modal-panel-edit"  >
+                    <div class="content">
+                        <span class="close" onClick="toggleModalEdit()">×</span>
+                        
+                                <h1 class="login-heading">Vote</h1>
+                                <div class="form">
+                                        <form class="login"  action="">
+                                                <div>
+                                                    <select name="role" id="">Office
+                                                        <option value="presdo">President</option>
+                                                        <option value="gov">Governor</option>
+                                                        <option value="Senator">Senator</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <select name="candidate" id="">Candidate
+                                                        <option value="seanbills">Sean Bills</option>
+                                                        <option value="johndoe">John Doe</option>
+                                                    </select>
+                                                </div>
+                                                
+                                                <div >
+                                                    <select name="party" id="">Political Party
+                                                        <option value="pp">People's Party</option>
+                                                        <option value="ip" selected>Independent</option>
+                                                    </select>
+                                                </div>
+                                               
+                                                <div>
+                                                    <input type="submit" value="Vote">
+                                                </div>
+                                            
+                                            </form>
+                                </div>
+                            
+                    </div>
+                    </div>
+                       
+                  
+                            <!-- candidates table -->
+                        <table class="table">
+                            
+                                <tr>
+                                    <th>Office</th>
+                                    <th>Candidates</th>
+                                    <th>Political Party</th>
+                                  <th>Vote</th>
+                                </tr>
+                                <tr>
+                                    <td>President</td>
+                                    <td>
+                                        <ul>
+                                            <li>Sean Bills</li>
+                                            <li>Sean Bills</li>
+                                            <li>Sean Bills</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>People's Party</li>
+                                            <li>Democratic Party</li>
+                                            <li>Independent</li>
+                                        </ul>
+                                    </td>
+                                  <td>
+                                      <i class="far fa-edit " onclick="toggleModalEdit()"></i> &nbsp; 
+                                     
+                                  </td>
+                                </tr>
+                                <tr>
+                                    <td>Senator</td>
+                        <td>
+                            <ul>
+                                <li>Sean Bills</li>
+                                <li>Sean Bills</li>
+                                <li>Sean Bills</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>People's Party</li>
+                                <li>Independent</li>
+                                <li>Democratic Party</li>
+                            </ul>
+                        </td>
+
+                                    <td>
+                                        <i class="far fa-edit " onclick="toggleModalEdit()"></i> &nbsp; 
+                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Governor</td>
+                        <td>
+                            <ul>
+                                <li>Sean Bills</li>
+                                <li>Sean Bills</li>
+                                <li>Sean Bills</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Independent</li>
+                                <li>Independent</li>
+                                <li>People's Party</li>
+                            </ul>
+                        </td>
+                                    <td>
+                                        <i class="far fa-edit " onclick="toggleModalEdit()"></i> &nbsp; 
+                                        
+                                    </td>
+                                </tr>
+                                
+                              </table>
+                </div>
+              
+
+
+        </div>
+
+    </section>
+    <footer id="footer" class="col-12">
+        <p>Copyright © 2019 Politico. All rights reserved.</p>
+    </footer>
+    
+    <script src="js/modals.js"></script>
+</body>
+
+</html>

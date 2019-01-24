@@ -28,10 +28,10 @@
   text-align: center;
   cursor: pointer;
   border-radius: 0.25rem;
-  background-color: lightgray;
+  background-color: white;
 }
 .close:hover {
-  background-color: darkgray;
+  background-color: black;
 }
 .show-modal-panel {
   opacity: 1;

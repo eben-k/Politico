@@ -2,3 +2,5 @@ node_modules/
 dist
 .gitattributes
 .env
+.nyc_output/
+.coveralls.yml

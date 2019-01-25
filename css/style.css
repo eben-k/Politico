@@ -5,9 +5,9 @@ html{
     padding: 0;
     overflow: hidden scroll;
   }
-  
+
   body {
-  
+
     margin: 0 auto;
     height: 100%;;
     font-family: 'Muli', sans-serif;
@@ -35,17 +35,17 @@ html{
      /* display: inline-block; */
      font-size: 2em;
   }
-  
+
   nav li {
     padding: 0 auto;
     margin: 5px;
     flex-basis: auto;
     /* font-size: 1em; */
   }
-  
-  
-  
-  
+
+
+
+
   .container {width: 80%; margin: 0px auto;}
   [class*="col-"] {float: left; padding: 15px;}
   .col-1 {width: 8.33%;}
@@ -60,7 +60,7 @@ html{
   .col-10 {width: 83.33%;}
   .col-11 {width: 91.66%;}
   .col-12 {width: 100%;}
-  
+
   .login-page {
     background: #f5f9f7;
     width: 100%;
@@ -102,7 +102,7 @@ html{
   a{
      text-decoration: none;
      color: inherit;
-  
+
   }
   .forgotpassword a {
     color: black;
@@ -165,7 +165,7 @@ html{
   width: 100%;
   height: 400px;
   margin:0 0 0 0;
-  background-image: url("/img/politics-2361943_960_720.jpg");
+  background-image: url("img/politics-2361943_960_720.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   padding-top: 10px;
@@ -204,7 +204,7 @@ html{
     color: rgba(0, 181, 204, 1);
     margin: 15px;
     position: relative;
-  
+
   }
   .card h4{
     float: left;
@@ -213,7 +213,7 @@ html{
   .text{
     float: right;
     /* display: inline-block; */
-  
+
   }
   .card .col-3{
     width: 30%;
@@ -221,7 +221,7 @@ html{
   .text-left{
     float:left;
     /* display: inline-block; */
-  
+
   }
   #page{
    padding-left: 90px;
@@ -240,19 +240,19 @@ html{
     margin-left: auto;
     margin-right: auto;
     height: 180px;
-  
+
   }
-  
+
   .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     border-radius: 10px;
   }
-  
+
   .product-detail{
     padding: 2px 16px;
-  
+
   }
-  
+
   #footer{
     text-align:center;
     height: 40px;
@@ -262,7 +262,7 @@ html{
     background: linear-gradient(to right, #7ecddd, #7690ac);
     overflow: hidden;
     width: 100%;
-  
+
   }
   /* ************Admin page************* */
   .admin-page{
@@ -271,25 +271,25 @@ html{
     margin-left: auto;
     margin-right: auto;
     height: 100vh;
-  
+
   }
   .admin-page .card{
     background: #f3efef;
-  
+
   }
   hr{
     color:rgba(0, 181, 204, 1);
   }
   .admin-page p{
     color: black;
-  
+
   }
   .active{
     color: rgba(0, 181, 204, 1) !important;
   }
-  
+
   /* ****button***** */
-  
+
   .button {
     display: inline-block;
     padding: 12px 23px;
@@ -305,21 +305,21 @@ html{
     box-shadow: 5px 5px 5px #999;
     margin-bottom: 10px;
   }
-  
+
   .button:hover {background-color:black}
-  
+
   .button:active {
     box-shadow: -5px 5px 5px white;
     transform: translateY(0.5px);
   }
-  
+
   /* ****Tables***** */
-  
+
   .table {
     border-collapse: collapse;
     max-width: 100%;
     color: black;
-  
+
   }
   .card {
     overflow-x:auto;
@@ -328,9 +328,9 @@ html{
     text-align: left;
     padding: 10px;
   }
-  
+
   tr:nth-child(even){background-color: #f2f2f2}
-  
+
   th {
     background-color: rgba(0, 181, 204, 1);
     color: #ffffff;
@@ -345,11 +345,11 @@ html{
   }
   .dashboard{
     margin-top: 53px;
-    
+
   }
-  
+
   /* Parties  */
-  
+
   .description p{
     color: #9b8b85;
     display: inline-block;
@@ -371,9 +371,9 @@ html{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     border-radius: 10px;
   }
-  
+
   /* ************  Badges  *************** */
-  
+
   .ribbon {
     width: 120px;
     height: 120px;
@@ -401,7 +401,7 @@ html{
     text-transform: uppercase;
     text-align: center;
   }
-  
+
   .ribbon-top-left {
     top: -10px;
     left: -10px;
@@ -424,21 +424,21 @@ html{
     top: 30px;
     transform: rotate(-45deg);
   }
-  
-  
-  
-  
+
+
+
+
   /* ******************   Page responsive media query***************************** */
   @media screen and (max-width: 850px){
     [class*="col-"] {
-  
+
         padding: 15px;
         width: 65%;
         margin-left: auto;
         margin-right: auto;
     }
   }
-  
+
   @media screen and (max-width: 700px) {
       nav{
           text-align: center
@@ -450,11 +450,11 @@ html{
         display: block;
         float: none;
     }
-  
+
     nav li {
         display: block;
     }
-  
+
     [class*="col-"] {
         display: block;
         padding: 15px;
@@ -463,7 +463,7 @@ html{
         margin-right: auto;
     }
   }
-  
+
   .far, .link{
      cursor: pointer;
   }
@@ -477,7 +477,7 @@ html{
      font-weight: bold;
   }
   tfoot td{
-  
+
     font-weight: bolder;
     font-size: 1.1em;
   }
@@ -486,7 +486,7 @@ html{
      font-size: 1.2em;
      font-weight: bold;
   }
-  
+
   @media screen and (max-width: 850px){
     #page, .admin-page, .login-page, .signup-page {
         margin: 0;
@@ -496,4 +496,3 @@ html{
         margin-right: auto;
     }
   }
-  

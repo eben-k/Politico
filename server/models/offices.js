@@ -1,25 +1,24 @@
-const db = [
+const officesModel = [
   {
-    prodId: 1,
-    name: 'Pampers Baby Diapers',
-    category: 'baby products',
-    quantity: '10 boxes',
-    price: '$10',
+    officeId: 1,
+    type: 'Federal',
+    name: 'President',
   },
   {
-    prodId: 2,
-    name: 'Colgate Toothpaste',
-    category: 'Personal products',
-    quantity: '15 boxes',
-    price: '$5',
+    officeId: 2,
+    type: 'State',
+    name: 'Governor',
   },
   {
-    prodId: 3,
-    name: 'Nike Air Sandals',
-    category: 'footwear',
-    quantity: '14 pairs',
-    price: '$50',
+    officeId: 3,
+    type: 'Local Government',
+    name: 'Chairperson',
+  },
+  {
+    officeId: 4,
+    type: 'Legislature',
+    name: 'Senator',
   },
 ];
 
-export default db;
+export default officesModel;

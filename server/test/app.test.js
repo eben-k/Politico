@@ -158,16 +158,12 @@ describe('Political Parties', () => {
 });
 
 describe('Political Offices', () => {
-  it.skip('should list ALL Political Offices on /offices GET', (done) => {
+  it('should list ALL Political Offices on /offices GET', (done) => {
     chai.request(app)
-      .get('/offices')
+      .get('/api/v1/offices')
       .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.be.a('array');
-        res.body[0].should.have.property('_id');
-        res.body[0].should.have.property('name');
-        res.body[0].should.have.property('type');
-        res.body[0].name.should.equal('Bat');
+        expect(res.status).to.equal(200);
+        expect(res.body.message).to.eql('Success, Government Offices: ');
         done();
       });
   });

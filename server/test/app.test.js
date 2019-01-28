@@ -41,16 +41,12 @@ describe('Tests for Homepage and invalid url endpoints', () => {
   });
 });
 describe('Political Parties', () => {
-  it.skip('should list ALL Political Parties on /parties GET', (done) => {
+  it('should list ALL Political Parties on /parties GET', (done) => {
     chai.request(app)
-      .get('/parties')
+      .get('/api/v1/parties')
       .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.be.a('array');
-        res.body[0].should.have.property('_id');
-        res.body[0].should.have.property('name');
-        res.body[0].should.have.property('hqAddress');
-        res.body[0].should.have.property('logoUrl');
+        expect(res.status).to.equal(200);
+        expect(res.body.message).to.eql('Success, Available Parties: ');
         done();
       });
   });

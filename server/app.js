@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import route from './routes/routes';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -7,6 +8,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use('/', route);
 app.use('/api/v1', (req, res) => {
   res.status(200).json({
     message: 'Welcome to Politico!',

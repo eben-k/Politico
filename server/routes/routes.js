@@ -7,6 +7,7 @@ const route = express.Router();
 route.get('/parties', PartyController.getAllParties);
 route.get('/parties/:partyId', PartyController.getParty);
 route.get('/offices', OfficeController.getAllOffices);
+route.get('/offices/:officeId', OfficeController.getOffice);
 
 
 export default route;

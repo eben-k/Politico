@@ -167,21 +167,24 @@ describe('Political Offices', () => {
         done();
       });
   });
-  it.skip('should list a SINGLE Political Office on /office/<id> GET', (done) => {
+  it('should list a SINGLE Political Office on /office/<id> GET', (done) => {
     chai.request(app)
-      .get(`/office/${data.id}`)
+      .get('/api/v1/offices/1')
       .end((err, res) => {
-        res.should.have.status(200);
-
-        res.body.should.be.a('object');
-        res.body.should.have.property('_id');
-        res.body.should.have.property('name');
-        res.body.should.have.property('type');
-        res.body.name.should.equal('Super');
+        expect(res.status).to.equal(200);
+        expect(res.body.data).to.be.an('array');
         done();
       });
   });
-
+  it('it should not get an office that does not exist', (done) => {
+    chai.request(app)
+      .get('/api/v1/offices/50')
+      .end((err, res) => {
+        expect(res.body.error).to.eql('This office does not exist');
+        expect(res.status).to.equal(404);
+        done();
+      });
+  });
   it.skip('should add a SINGLE Political Office on /offices POST', (done) => {
     chai.request(app)
       .post('/offices')

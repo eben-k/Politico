@@ -14,4 +14,41 @@ const getAllOffices = (req, res) => {
     data: offices,
   });
 };
-export default { getAllOffices };
+
+/**
+*Get a political office
+  *@description Retrieves an office by id
+  *@static
+  *@param  {Object} req - request
+  *@param  {object} res - response
+  *@return {object} - status code, data
+  */
+
+const getOffice = (req, res) => {
+  const { officeId } = req.params;
+  let found = false;
+  let officeDetails;
+  offices.map((office) => {
+    if (office.officeId === Number(officeId)) {
+      officeDetails = office;
+      found = true;
+      return true;
+    }
+    return false;
+  });
+  if (found) {
+    return (res.status(200).json({
+      status: 200,
+      data: [officeDetails],
+    }));
+  }
+  return (res.status(404).json({
+    status: 404,
+    error: 'This office does not exist',
+  }));
+};
+
+export default {
+  getAllOffices,
+  getOffice,
+};

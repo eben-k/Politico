@@ -1,10 +1,12 @@
 import express from 'express';
-import getAllParties from '../controller/parties';
-import getAllOffices from '../controller/offices';
+import PartyController from '../controller/parties';
+import OfficeController from '../controller/offices';
 
 const route = express.Router();
 
-route.get('/api/v1/parties', getAllParties);
-route.get('/api/v1/offices', getAllOffices);
+route.get('/parties', PartyController.getAllParties);
+route.get('/parties/:partyId', PartyController.getParty);
+route.get('/offices', OfficeController.getAllOffices);
+
 
 export default route;

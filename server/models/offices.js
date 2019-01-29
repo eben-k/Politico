@@ -1,4 +1,4 @@
-const officesModel = [
+const offices = [
   {
     officeId: 1,
     type: 'Federal',
@@ -21,4 +21,4 @@ const officesModel = [
   },
 ];
 
-export default officesModel;
+export default offices;

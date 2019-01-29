@@ -1,4 +1,4 @@
-const partiesModel = [
+const parties = [
   {
     partyId: 1,
     name: 'Conservative Party',
@@ -25,4 +25,4 @@ const partiesModel = [
   },
 ];
 
-export default partiesModel;
+export default parties;

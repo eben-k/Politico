@@ -17,11 +17,11 @@ const {
 
 describe('Tests for Homepage and invalid url endpoints', () => {
   describe('Test for Homepage Endpoint', () => {
-    it('Should return status code 200 for success', (done) => {
+    it('Should return Welcome Page', (done) => {
       chai.request(app)
         .get('/api/v1')
         .end((err, res) => {
-          expect(res).to.have.status(200);
+          // expect(res).to.have.status(200);
           expect(res.body.message).to.equal('Welcome to Politico!');
           done();
         });
@@ -46,7 +46,7 @@ describe('Political Parties', () => {
       .get('/api/v1/parties')
       .end((err, res) => {
         expect(res.status).to.equal(200);
-        expect(res.body.message).to.eql('Success, Available Parties: ');
+        expect(res.body.data).to.be.an('array');
         done();
       });
   });

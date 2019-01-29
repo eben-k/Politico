@@ -1,4 +1,4 @@
-import partiesModel from '../models/parties';
+import partiesList from '../models/parties';
 
 /**
     *Get all parties
@@ -10,9 +10,8 @@ import partiesModel from '../models/parties';
     */
 const getAllParties = (req, res) => {
   res.status(200).json({
-    message: 'Success, Available Parties: ',
-    partiesModel,
-    error: false,
+    status: 200,
+    data: partiesList,
   });
 };
 export default getAllParties;

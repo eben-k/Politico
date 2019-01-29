@@ -75,8 +75,44 @@ const addParty = (req, res) => {
   );
 };
 
+/**
+*Delete party
+*@description Delete a party by id
+*@static
+*@param  {Object} req - request
+*@param  {object} res - response
+*@return {object} - status code and data
+*/
+
+const deleteParty = (req, res) => {
+  const { partyId } = req.params;
+  let found = false;
+  let partyIndex;
+  parties.map((party, index) => {
+    if (party.partyId === Number(partyId)) {
+      partyIndex = index;
+      found = true;
+      return true;
+    }
+    return false;
+  });
+  if (found) {
+    parties.splice(partyIndex, 1);
+    return (res.status(200).json({
+      status: 200,
+      data: [{ message: 'Party deleted Successfully' }],
+    }));
+  }
+  return (res.status(404).json({
+    status: 404,
+    error: 'This party does not exist',
+  }));
+};
+
+
 export default {
   getAllParties,
   getParty,
   addParty,
+  deleteParty,
 };

@@ -12,5 +12,6 @@ route.get('/offices', OfficeController.getAllOffices);
 route.get('/offices/:officeId', OfficeController.getOffice);
 route.post('/parties', createPartyValidator, PartyController.addParty);
 route.post('/offices', createOfficeValidator, OfficeController.addOffice);
+route.delete('/parties/:partyId', PartyController.deleteParty);
 
 export default route;

@@ -120,26 +120,25 @@ describe('Political Parties', () => {
           });
       });
   });
-  it.skip('should delete a SINGLE Political Party on /party/<id> DELETE', (done) => {
+  it('should delete a SINGLE Political Party on /party/<id> DELETE', (done) => {
     chai.request(app)
-      .get('/parties')
+      .delete('/api/v1/parties/3')
       .end((err, res) => {
-        chai.request(app)
-          .delete(`/party/${res.body[0]._id}`)
-          .end((error, response) => {
-            response.should.have.status(200);
-            response.body.should.be.a('object');
-            response.body.should.have.property('REMOVED');
-            response.body.REMOVED.should.be.a('object');
-            response.body.REMOVED.should.have.property('name');
-            response.body.REMOVED.should.have.property('_id');
-            response.body.REMOVED.name.should.equal('Bat');
-            done();
-          });
+        expect(res.body.data).to.be.an('array');
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+  it('it should not delete party that does not exist', (done) => {
+    chai.request(app)
+      .delete('/api/v1/parties/50')
+      .end((err, res) => {
+        expect(res.body.error).to.eql('This party does not exist');
+        expect(res.status).to.equal(404);
+        done();
       });
   });
 });
-
 describe('Political Offices', () => {
   it('should list ALL Political Offices on /offices GET', (done) => {
     chai.request(app)

@@ -9,11 +9,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/v1', route);
-app.get('/api/v1', (req, res) => {
-  res.send({
-    message: 'Welcome to Politico!',
-  });
-});
+// app.get('/', (req, res) => {
+//   res.send({
+//     message: 'Welcome to Politico!',
+//   });
+// });
 
 app.use('*', (req, res, next) => {
   res.status(404).json({

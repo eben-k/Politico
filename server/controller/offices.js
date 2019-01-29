@@ -1,4 +1,4 @@
-import officesModel from '../models/offices';
+import officesList from '../models/offices';
 
 /**
     *Get all offices
@@ -10,9 +10,8 @@ import officesModel from '../models/offices';
     */
 const getAllOffices = (req, res) => {
   res.status(200).json({
-    message: 'Success, Government Offices: ',
-    officesModel,
-    error: false,
+    status: 200,
+    data: officesList,
   });
 };
 export default getAllOffices;

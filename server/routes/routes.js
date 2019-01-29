@@ -4,7 +4,7 @@ import getAllOffices from '../controller/offices';
 
 const route = express.Router();
 
-route.get('/api/v1/parties', getAllParties);
-route.get('/api/v1/offices', getAllOffices);
+route.get('/parties', getAllParties);
+route.get('/offices', getAllOffices);
 
 export default route;

@@ -17,7 +17,7 @@ const {
 
 describe('Tests for Homepage and invalid url endpoints', () => {
   describe('Test for Homepage Endpoint', () => {
-    it('Should return status code 200 for success', (done) => {
+    it.skip('Should return Welcome Page', (done) => {
       chai.request(app)
         .get('/api/v1')
         .end((err, res) => {
@@ -46,7 +46,7 @@ describe('Political Parties', () => {
       .get('/api/v1/parties')
       .end((err, res) => {
         expect(res.status).to.equal(200);
-        expect(res.body.message).to.eql('Success, Available Parties: ');
+        expect(res.body.data).to.be.an('array');
         done();
       });
   });
@@ -163,7 +163,7 @@ describe('Political Offices', () => {
       .get('/api/v1/offices')
       .end((err, res) => {
         expect(res.status).to.equal(200);
-        expect(res.body.message).to.eql('Success, Government Offices: ');
+        expect(res.body.data).to.be.an('array');
         done();
       });
   });
@@ -181,20 +181,21 @@ describe('Political Offices', () => {
         done();
       });
   });
-});
-it.skip('should add a SINGLE Political Office on /offices POST', (done) => {
-  chai.request(app)
-    .post('/offices')
-    .send({ name: 'Java', lastName: 'Script' })
-    .end((err, res) => {
-      res.should.have.status(200);
-      res.body.should.be.a('object');
-      res.body.should.have.property('SUCCESS');
-      res.body.SUCCESS.should.be.a('object');
-      res.body.SUCCESS.should.have.property('name');
-      res.body.SUCCESS.should.have.property('type');
-      res.body.SUCCESS.should.have.property('_id');
-      res.body.SUCCESS.name.should.equal('Java');
-      done();
-    });
+
+  it.skip('should add a SINGLE Political Office on /offices POST', (done) => {
+    chai.request(app)
+      .post('/offices')
+      .send({ name: 'Java', lastName: 'Script' })
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.should.have.property('SUCCESS');
+        res.body.SUCCESS.should.be.a('object');
+        res.body.SUCCESS.should.have.property('name');
+        res.body.SUCCESS.should.have.property('type');
+        res.body.SUCCESS.should.have.property('_id');
+        res.body.SUCCESS.name.should.equal('Java');
+        done();
+      });
+  });
 });

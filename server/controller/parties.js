@@ -48,7 +48,35 @@ const getParty = (req, res) => {
   }));
 };
 
+/**
+  *Create a party
+  *@description Adds a new party
+  *@static
+  *@param  {Object} req - request
+  *@param  {object} res - response
+  *@return {object} - status code, and data
+  */
+
+const addParty = (req, res) => {
+  const {
+    name,
+  } = req.body;
+  const id = parties.length + 1;
+  const partyDetails = {
+    id,
+    name,
+  };
+  parties.push(partyDetails);
+  return (
+    res.status(201).json({
+      status: 201,
+      data: [partyDetails],
+    })
+  );
+};
+
 export default {
   getAllParties,
   getParty,
+  addParty,
 };

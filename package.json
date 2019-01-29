@@ -22,8 +22,9 @@
   },
   "homepage": "https://github.com/eben-k/Politico#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "body-parser": "^1.18.3"
+    "express-validator": "^5.3.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

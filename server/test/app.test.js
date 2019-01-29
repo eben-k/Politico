@@ -56,22 +56,10 @@ describe('Political Parties', () => {
       .end((err, res) => {
         expect(res.status).to.equal(200);
         expect(res.body.data).to.be.an('array');
-        // res.body[0].should.have.property('_id');
-        // res.body[0].should.have.property('name');
-        // res.body[0].should.have.property('hqAddress');
-        // res.body[0].should.have.property('logoUrl');
         done();
       });
   });
-  // it('it should not get a party with ID of NaN', (done) => {
-  //   chai.request(app)
-  //     .get('/api/v1/parties/uu')
-  //     .end((err, res) => {
-  //       expect(res.body.message).to.eql('ID can only be a number');
-  //       expect(res.status).to.equal(400);
-  //       done();
-  //     });
-  // });
+
   it('it should not get party that does not exist', (done) => {
     chai.request(app)
       .get('/api/v1/parties/50')
@@ -81,39 +69,34 @@ describe('Political Parties', () => {
         done();
       });
   });
-  it.skip('should add a SINGLE Political Party on /parties POST', (done) => {
+  it('should add a SINGLE Political Party on /parties POST', (done) => {
     chai.request(app)
-      .post('/parties')
+      .post('/api/v1/parties')
       .send(newParty)
       .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.be.a('object');
-        res.body.should.have.property('SUCCESS');
-        res.body.SUCCESS.should.be.a('object');
-        res.body.SUCCESS.should.have.property('name');
-        res.body.SUCCESS.should.have.property('hqAddress');
-        res.body.SUCCESS.should.have.property('logoUrl');
+        expect(res.status).to.equal(201);
+        expect(res.body.data).to.be.an('array');
         done();
       });
   });
-  it.skip('it should not post party with empty field', (done) => {
+  it('it should not post party with empty field', (done) => {
     chai.request(app)
       .post('/api/v1/parties')
       .send(emptyField)
       .end((err, res) => {
-        expect(res.body.errors[0]).to.eql('Field is required');
-        expect(res.body.errors[1]).to.eql('Field should be more than 5 words');
-        expect(res.body.errors[2]).to.eql('Field is required');
+        expect(res.body.errors[0]).to.eql('Political Party name is required');
+        expect(res.body.errors[1]).to.eql('Party name should be more than 5 characters');
+        expect(res.body.errors[2]).to.eql('Party name should be valid');
         expect(res.status).to.equal(400);
         done();
       });
   });
-  it.skip('it should not post party with only spaces in the field', (done) => {
+  it('it should not post party with only spaces in the field', (done) => {
     chai.request(app)
       .post('/api/v1/parties')
       .send(spacedField)
       .end((err, res) => {
-        expect(res.body.message).to.eql('Please fill in all fields');
+        // expect(res.body.error).to.eql('Please fill in all fields');
         expect(res.status).to.equal(400);
         done();
       });

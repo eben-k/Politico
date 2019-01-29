@@ -97,11 +97,11 @@ const partyDetails = {
 };
 
 const officeDetails = {
-  emptyField: {
+  nullField: {
     type: '',
     name: 'President',
   },
-  spacedField: {
+  spaceField: {
     type: '   ',
     name: 'President',
   },

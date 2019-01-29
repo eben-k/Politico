@@ -11,9 +11,9 @@ chai.use(chaiHttp);
 const {
   newParty, emptyField, spacedField,
 } = partyDetails;
-// const {
-//   office, office2, newOffice, emptyField, spacedField,
-// } = officeDetails;
+const {
+  newOffice, nullField, spaceField,
+} = officeDetails;
 
 describe('Tests for Homepage and invalid url endpoints', () => {
   describe('Test for Homepage Endpoint', () => {
@@ -168,19 +168,34 @@ describe('Political Offices', () => {
         done();
       });
   });
-  it.skip('should add a SINGLE Political Office on /offices POST', (done) => {
+  it('should add a SINGLE Political Office on /offices POST', (done) => {
     chai.request(app)
-      .post('/offices')
-      .send({ name: 'Java', lastName: 'Script' })
+      .post('/api/v1/offices')
+      .send(newOffice)
       .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.be.a('object');
-        res.body.should.have.property('SUCCESS');
-        res.body.SUCCESS.should.be.a('object');
-        res.body.SUCCESS.should.have.property('name');
-        res.body.SUCCESS.should.have.property('type');
-        res.body.SUCCESS.should.have.property('_id');
-        res.body.SUCCESS.name.should.equal('Java');
+        expect(res.status).to.equal(201);
+        expect(res.body.data).to.be.an('array');
+        done();
+      });
+  });
+  it('it should not post office with empty field', (done) => {
+    chai.request(app)
+      .post('/api/v1/offices')
+      .send(nullField)
+      .end((err, res) => {
+        expect(res.body.errors[0]).to.eql('Political Office type is required');
+        expect(res.body.errors[1]).to.eql('Office type should be more than 4 characters');
+        expect(res.body.errors[2]).to.eql('Office type should be valid');
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+  it('it should not post office with only spaces in the field', (done) => {
+    chai.request(app)
+      .post('/api/v1/offices')
+      .send(spaceField)
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
         done();
       });
   });

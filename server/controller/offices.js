@@ -48,7 +48,37 @@ const getOffice = (req, res) => {
   }));
 };
 
+/**
+  *Create a political office
+  *@description Adds a new political office
+  *@static
+  *@param  {Object} req - request
+  *@param  {object} res - response
+  *@return {object} - status code, and data
+  */
+
+const addOffice = (req, res) => {
+  const {
+    type,
+    name,
+  } = req.body;
+  const id = offices.length + 1;
+  const officeDetails = {
+    id,
+    type,
+    name,
+  };
+  offices.push(officeDetails);
+  return (
+    res.status(201).json({
+      status: 201,
+      data: [officeDetails],
+    })
+  );
+};
+
 export default {
   getAllOffices,
   getOffice,
+  addOffice,
 };

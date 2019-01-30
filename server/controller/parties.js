@@ -109,10 +109,64 @@ const deleteParty = (req, res) => {
   }));
 };
 
+/**
+  *Updates Political Party
+  *@description Update party by ID
+  *@static
+  *@param  {Object} req - request
+  *@param  {object} res - response
+  *@return {object} - party data
+  */
+
+const updateParty = (req, res) => {
+  const { partyId } = req.params;
+  const {
+    name,
+    hqAddress,
+    logoUrl,
+    email,
+    phone,
+  } = req.body;
+  let partyIndex;
+  let found = false;
+  parties.map((party, index) => {
+    if (party.partyId === Number(partyId)) {
+      partyIndex = index;
+      found = true;
+    }
+    return false;
+  });
+  if (found) {
+    const { id } = parties[partyIndex];
+    const partyDetails = {
+      id,
+      name,
+      hqAddress,
+      logoUrl,
+      email,
+      phone,
+    };
+    parties[partyIndex] = partyDetails;
+    return (
+      res.status(201).json({
+        status: 201,
+        data: [partyDetails],
+      })
+    );
+  }
+  return (
+    res.status(404).json({
+      status: 404,
+      error: 'This Party does not exist',
+    })
+  );
+};
+
 
 export default {
   getAllParties,
   getParty,
   addParty,
   deleteParty,
+  updateParty,
 };

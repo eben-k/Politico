@@ -30,7 +30,7 @@ const getOffice = (req, res) => {
   if (officeDetails) {
     return (res.status(200).json({
       status: 200,
-      data: [officeDetails],
+      data: officeDetails,
     }));
   }
   return (res.status(404).json({
@@ -63,7 +63,7 @@ const addOffice = (req, res) => {
   return (
     res.status(201).json({
       status: 201,
-      data: [officeDetails],
+      data: officeDetails,
     })
   );
 };

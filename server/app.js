@@ -12,11 +12,10 @@ app.use(expressValidator());
 
 app.use('/api/v1', route);
 
-app.use('*', (req, res, next) => {
+app.use('*', (req, res) => {
   res.status(404).json({
     message: 'Page not found',
   });
-  next();
 });
 
 

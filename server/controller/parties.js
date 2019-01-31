@@ -24,19 +24,34 @@ const getAllParties = (req, res) => {
   *@return {object} - status code, data
   */
 
+// const getParty = (req, res) => {
+//   const { partyId } = req.params;
+//   let found = false;
+//   let partyDetails;
+//   parties.map((party) => {
+//     if (party.partyId === Number(partyId)) {
+//       partyDetails = party;
+//       found = true;
+//       return true;
+//     }
+//     return false;
+//   });
+//   if (found) {
+//     return (res.status(200).json({
+//       status: 200,
+//       data: [partyDetails],
+//     }));
+//   }
+//   return (res.status(404).json({
+//     status: 404,
+//     error: 'This party does not exist',
+//   }));
+// };
+
 const getParty = (req, res) => {
   const { partyId } = req.params;
-  let found = false;
-  let partyDetails;
-  parties.map((party) => {
-    if (party.partyId === Number(partyId)) {
-      partyDetails = party;
-      found = true;
-      return true;
-    }
-    return false;
-  });
-  if (found) {
+  const partyDetails = parties.find(party => party.id === Number(partyId));
+  if (partyDetails) {
     return (res.status(200).json({
       status: 200,
       data: [partyDetails],
@@ -60,11 +75,19 @@ const getParty = (req, res) => {
 const addParty = (req, res) => {
   const {
     name,
+    hqAddress,
+    logoUrl,
+    email,
+    phone,
   } = req.body;
   const id = parties.length + 1;
   const partyDetails = {
     id,
     name,
+    hqAddress,
+    logoUrl,
+    email,
+    phone,
   };
   parties.push(partyDetails);
   return (
@@ -86,17 +109,8 @@ const addParty = (req, res) => {
 
 const deleteParty = (req, res) => {
   const { partyId } = req.params;
-  let found = false;
-  let partyIndex;
-  parties.map((party, index) => {
-    if (party.partyId === Number(partyId)) {
-      partyIndex = index;
-      found = true;
-      return true;
-    }
-    return false;
-  });
-  if (found) {
+  const partyIndex = parties.findIndex(party => party.id === Number(partyId));
+  if (partyIndex !== -1) {
     parties.splice(partyIndex, 1);
     return (res.status(200).json({
       status: 200,
@@ -120,37 +134,14 @@ const deleteParty = (req, res) => {
 
 const updateParty = (req, res) => {
   const { partyId } = req.params;
-  const {
-    name,
-    hqAddress,
-    logoUrl,
-    email,
-    phone,
-  } = req.body;
-  let partyIndex;
-  let found = false;
-  parties.map((party, index) => {
-    if (party.partyId === Number(partyId)) {
-      partyIndex = index;
-      found = true;
-    }
-    return false;
-  });
-  if (found) {
-    const { id } = parties[partyIndex];
-    const partyDetails = {
-      id,
-      name,
-      hqAddress,
-      logoUrl,
-      email,
-      phone,
-    };
-    parties[partyIndex] = partyDetails;
+  const { name } = req.body;
+  const partyIndex = parties.find(party => party.id === Number(partyId));
+  if (partyIndex) {
+    partyIndex.name = name;
     return (
       res.status(201).json({
         status: 201,
-        data: [partyDetails],
+        data: [partyIndex],
       })
     );
   }
@@ -161,7 +152,6 @@ const updateParty = (req, res) => {
     })
   );
 };
-
 
 export default {
   getAllParties,

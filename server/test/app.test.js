@@ -4,7 +4,6 @@ import chaiHttp from 'chai-http';
 import app from '../app';
 import { partyDetails, officeDetails } from './mocks/mockData';
 
-const should = chai.should();
 const { expect } = chai;
 chai.use(chaiHttp);
 

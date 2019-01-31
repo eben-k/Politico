@@ -53,7 +53,7 @@ describe('Political Parties', () => {
       .get('/api/v1/parties/1')
       .end((err, res) => {
         expect(res.status).to.equal(200);
-        expect(res.body.data).to.be.an('array');
+        expect(res.body.data).to.be.an('object');
         done();
       });
   });
@@ -73,7 +73,7 @@ describe('Political Parties', () => {
       .send(newParty)
       .end((err, res) => {
         expect(res.status).to.equal(201);
-        expect(res.body.data).to.be.an('array');
+        expect(res.body.data).to.be.an('object');
         done();
       });
   });
@@ -104,7 +104,7 @@ describe('Political Parties', () => {
       .patch('/api/v1/parties/1')
       .send(updateParty)
       .end((err, res) => {
-        expect(res.body.data).to.be.an('array');
+        expect(res.body.data).to.be.an('object');
         expect(res.status).to.equal(201);
         done();
       });
@@ -123,7 +123,7 @@ describe('Political Parties', () => {
     chai.request(app)
       .delete('/api/v1/parties/3')
       .end((err, res) => {
-        expect(res.body.data).to.be.an('array');
+        expect(res.body.data).to.be.an('object');
         expect(res.status).to.equal(200);
         done();
       });
@@ -153,7 +153,7 @@ describe('Political Offices', () => {
       .get('/api/v1/offices/1')
       .end((err, res) => {
         expect(res.status).to.equal(200);
-        expect(res.body.data).to.be.an('array');
+        expect(res.body.data).to.be.an('object');
         done();
       });
   });
@@ -172,7 +172,7 @@ describe('Political Offices', () => {
       .send(newOffice)
       .end((err, res) => {
         expect(res.status).to.equal(201);
-        expect(res.body.data).to.be.an('array');
+        expect(res.body.data).to.be.an('object');
         done();
       });
   });

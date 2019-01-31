@@ -1,11 +1,21 @@
 import express from 'express';
+import bodyParser from 'body-parser';
+import expressValidator from 'express-validator';
+import route from './routes/routes';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-  res.send({
-    message: 'Welcome to Politico!',
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator());
+
+app.use('/api/v1', route);
+
+app.use('*', (req, res) => {
+  res.status(404).json({
+    message: 'Page not found',
   });
 });
 

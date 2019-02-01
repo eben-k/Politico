@@ -6,12 +6,13 @@
   "scripts": {
     "start": "node dist/app.js",
     "start:dev": "nodemon --exec babel-node server/app.js",
-    "test": "nyc mocha --compilers js:babel-register server/test --exit",
+    "test": "npm run create-table && nyc mocha --compilers js:babel-register server/test --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "build": "rm -rf dist && babel server -d dist --presets=env",
-    "droptable": "babel-node server/database/models/dropTable",
+    "droptable": "babel-node server/database/models/dropTables",
     "create-table": " npm run droptable && babel-node server/database/models/tables && npm run seed",
     "seed": "babel-node server/database/models/seed",
+    "babel-node": "babel-node --presets=env",
     "heroku-postbuild": "npm run build"
   },
   "repository": {

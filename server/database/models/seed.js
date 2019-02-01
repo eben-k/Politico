@@ -4,7 +4,7 @@ import pool from './configDb';
 const sampleUser = (id, firstname, lastname, email, phoneNumber, passportUrl, isAdmin, password) => {
   const hashed = bcrypt.hashSync(password, 10);
   const query = {
-    text: 'INSERT INTO Users(id, firstname, lastname , email, phoneNumber, passportUrl, isAdmin, password) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING firstname, lastname, email, isAdmin',
+    text: 'INSERT INTO users(id, firstname, lastname , email, phoneNumber, passportUrl, isAdmin, password) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING firstname, lastname, email, isAdmin',
     values: [id, firstname, lastname, email, phoneNumber, passportUrl, isAdmin, hashed],
   };
   pool.query(query);
@@ -12,7 +12,7 @@ const sampleUser = (id, firstname, lastname, email, phoneNumber, passportUrl, is
 
 const sampleParty = (id, name, hqAddress, logoUrl, email, phoneNumber) => {
   const query = {
-    text: 'INSERT INTO Parties(id, name, hqAddress, logoUrl, email, phoneNumber) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
+    text: 'INSERT INTO parties(id, name, hqAddress, logoUrl, email, phoneNumber) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
     values: [id, name, hqAddress, logoUrl, email, phoneNumber],
   };
   pool.query(query);
@@ -20,7 +20,7 @@ const sampleParty = (id, name, hqAddress, logoUrl, email, phoneNumber) => {
 
 const sampleOffice = (id, type, name) => {
   const query = {
-    text: 'INSERT INTO Offices(id, type, name) VALUES($1, $2, $3) RETURNING *',
+    text: 'INSERT INTO offices(id, type, name) VALUES($1, $2, $3) RETURNING *',
     values: [id, type, name],
   };
   pool.query(query);
@@ -28,7 +28,7 @@ const sampleOffice = (id, type, name) => {
 
 const sampleCandidate = (id, office, party, candidate) => {
   const query = {
-    text: 'INSERT INTO Candidates(id, office, party, candidate) VALUES($1, $2, $3, $4) RETURNING *',
+    text: 'INSERT INTO candidates(id, office, party, candidate) VALUES($1, $2, $3, $4) RETURNING *',
     values: [id, office, party, candidate],
   };
   pool.query(query);
@@ -36,7 +36,7 @@ const sampleCandidate = (id, office, party, candidate) => {
 
 const sampleVote = (id, createdBy, office, candidate) => {
   const query = {
-    text: 'INSERT INTO Votes(id, createdBy, office, candidate) VALUES($1, $2, $3, $4) RETURNING *',
+    text: 'INSERT INTO votes(id, createdBy, office, candidate) VALUES($1, $2, $3, $4) RETURNING *',
     values: [id, createdBy, office, candidate],
   };
   pool.query(query);
@@ -44,7 +44,7 @@ const sampleVote = (id, createdBy, office, candidate) => {
 
 const samplePetition = (id, createdBy, office, body) => {
   const query = {
-    text: 'INSERT INTO Petition(id, createdBy, office, body) VALUES($1, $2, $3, $4) RETURNING *',
+    text: 'INSERT INTO petitions(id, createdBy, office, body) VALUES($1, $2, $3, $4) RETURNING *',
     values: [id, createdBy, office, body],
   };
   pool.query(query);

@@ -1,9 +1,11 @@
+import bcrypt from 'bcryptjs';
 import pool from './configDb';
 
-const sampleUser = (id, firstname, lastname, email, phoneNumber, passportUrl, isAdmin) => {
+const sampleUser = (id, firstname, lastname, email, phoneNumber, passportUrl, isAdmin, password) => {
+  const hashed = bcrypt.hashSync(password, 10);
   const query = {
-    text: 'INSERT INTO Users(id, firstname, lastname , email, phoneNumber, passportUrl, isAdmin) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING firstname, lastname, email, isAdmin',
-    values: [id, firstname, lastname, email, phoneNumber, passportUrl, isAdmin],
+    text: 'INSERT INTO Users(id, firstname, lastname , email, phoneNumber, passportUrl, isAdmin, password) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING firstname, lastname, email, isAdmin',
+    values: [id, firstname, lastname, email, phoneNumber, passportUrl, isAdmin, hashed],
   };
   pool.query(query);
 };
@@ -48,9 +50,9 @@ const samplePetition = (id, createdBy, office, body) => {
   pool.query(query);
 };
 
-sampleUser(1, 'admin', 'admin', 'admin@gmail.com', '233334455', 'admin.admin', true);
-sampleUser(2, 'chidimma', 'chidimma', 'chidimma@gmail.com', '458688894', 'chidimma.admin', false);
-sampleUser(3, 'ogechi ibe', 'ogechi', 'ogechi@gmail.com', '458688894', 'ogechi.admin', false);
+sampleUser(1, 'admin', 'admin', 'admin@gmail.com', '233334455', 'admin.admin', true, 'adminns');
+sampleUser(2, 'chidimma', 'chidimma', 'chidimma@gmail.com', '458688894', 'chidimma.admin', false, 'dhgjfjjdj');
+sampleUser(3, 'ogechi ibe', 'ogechi', 'ogechi@gmail.com', '458688894', 'ogechi.admin', false, 'ghejjrj');
 
 sampleParty(1, 'Freedom Party', '40 aakija street', 'logo.jpg', 'admin@gmail.com', '23456789');
 sampleParty(2, 'Liberty Party', '20 aakija street', 'logo1.jpg', 'admin@gmail.com', '23456789');

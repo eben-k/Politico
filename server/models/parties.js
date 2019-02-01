@@ -1,6 +1,6 @@
 const parties = [
   {
-    partyId: 1,
+    id: 1,
     name: 'Conservative Party',
     hqAddress: '40 Hanson Street, Las Palmas',
     logoUrl: 'image1.jpg',
@@ -8,7 +8,7 @@ const parties = [
     phone: '23480000089',
   },
   {
-    partyId: 2,
+    id: 2,
     name: 'Freedom Party',
     hqAddress: '30 Hanson Street, Las Palmas',
     logoUrl: 'image2.jpg',
@@ -16,7 +16,7 @@ const parties = [
     phone: '23480000089',
   },
   {
-    partyId: 3,
+    id: 3,
     name: 'Liberty Party',
     hqAddress: '50 Hanson Street, Las Palmas',
     logoUrl: 'image3.jpg',

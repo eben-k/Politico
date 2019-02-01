@@ -26,20 +26,11 @@ const getAllOffices = (req, res) => {
 
 const getOffice = (req, res) => {
   const { officeId } = req.params;
-  let found = false;
-  let officeDetails;
-  offices.map((office) => {
-    if (office.officeId === Number(officeId)) {
-      officeDetails = office;
-      found = true;
-      return true;
-    }
-    return false;
-  });
-  if (found) {
+  const officeDetails = offices.find(office => office.id === Number(officeId));
+  if (officeDetails) {
     return (res.status(200).json({
       status: 200,
-      data: [officeDetails],
+      data: officeDetails,
     }));
   }
   return (res.status(404).json({
@@ -72,7 +63,7 @@ const addOffice = (req, res) => {
   return (
     res.status(201).json({
       status: 201,
-      data: [officeDetails],
+      data: officeDetails,
     })
   );
 };

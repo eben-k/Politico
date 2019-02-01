@@ -1,4 +1,3 @@
-// const assert = require('assert');
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
@@ -11,7 +10,7 @@ let authToken;
 let authToken2;
 
 const {
-  newParty, emptyField, spacedField,
+  newParty, emptyField, spacedField, updateParty,
 } = partyDetails;
 const {
   newOffice, nullField, spaceField,
@@ -60,7 +59,7 @@ describe('Political Parties', () => {
       .get('/api/v1/parties/1')
       .end((err, res) => {
         expect(res.status).to.equal(200);
-        expect(res.body.data).to.be.an('array');
+        expect(res.body.data).to.be.an('object');
         done();
       });
   });
@@ -80,7 +79,7 @@ describe('Political Parties', () => {
       .send(newParty)
       .end((err, res) => {
         expect(res.status).to.equal(201);
-        expect(res.body.data).to.be.an('array');
+        expect(res.body.data).to.be.an('object');
         done();
       });
   });
@@ -91,7 +90,7 @@ describe('Political Parties', () => {
       .end((err, res) => {
         expect(res.body.errors[0]).to.eql('Political Party name is required');
         expect(res.body.errors[1]).to.eql('Party name should be more than 5 characters');
-        expect(res.body.errors[2]).to.eql('Party name should be valid');
+        // expect(res.body.errors[2]).to.eql('Party name should be valid');
         expect(res.status).to.equal(400);
         done();
       });
@@ -106,30 +105,31 @@ describe('Political Parties', () => {
         done();
       });
   });
-  it.skip('should update a SINGLE Political Party on /party/<id> PUT', (done) => {
+  it('should update a SINGLE Political Party on /party/<id> PATCH', (done) => {
     chai.request(app)
-      .get('/parties')
+      .patch('/api/v1/parties/1')
+      .send(updateParty)
       .end((err, res) => {
-        chai.request(app)
-          .put(`/party/${res.body[0]._id}`)
-          .send({ name: 'Spider' })
-          .end((error, response) => {
-            response.should.have.status(200);
-            response.body.should.be.a('object');
-            response.body.should.have.property('UPDATED');
-            response.body.UPDATED.should.be.a('object');
-            response.body.UPDATED.should.have.property('name');
-            response.body.UPDATED.should.have.property('_id');
-            response.body.UPDATED.name.should.equal('Spider');
-            done();
-          });
+        expect(res.body.data).to.be.an('object');
+        expect(res.status).to.equal(201);
+        done();
+      });
+  });
+  it('it should not update Party if party does not exist', (done) => {
+    chai.request(app)
+      .patch('/api/v1/parties/80')
+      .send(newParty)
+      .end((err, res) => {
+        expect(res.body.error).to.eql('This Party does not exist');
+        expect(res.status).to.equal(404);
+        done();
       });
   });
   it('should delete a SINGLE Political Party on /party/<id> DELETE', (done) => {
     chai.request(app)
       .delete('/api/v1/parties/3')
       .end((err, res) => {
-        expect(res.body.data).to.be.an('array');
+        expect(res.body.data).to.be.an('object');
         expect(res.status).to.equal(200);
         done();
       });
@@ -159,7 +159,7 @@ describe('Political Offices', () => {
       .get('/api/v1/offices/1')
       .end((err, res) => {
         expect(res.status).to.equal(200);
-        expect(res.body.data).to.be.an('array');
+        expect(res.body.data).to.be.an('object');
         done();
       });
   });
@@ -178,7 +178,7 @@ describe('Political Offices', () => {
       .send(newOffice)
       .end((err, res) => {
         expect(res.status).to.equal(201);
-        expect(res.body.data).to.be.an('array');
+        expect(res.body.data).to.be.an('object');
         done();
       });
   });

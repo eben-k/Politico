@@ -1,21 +1,21 @@
 const offices = [
   {
-    officeId: 1,
+    id: 1,
     type: 'Federal',
     name: 'President',
   },
   {
-    officeId: 2,
+    id: 2,
     type: 'State',
     name: 'Governor',
   },
   {
-    officeId: 3,
+    id: 3,
     type: 'Local Government',
     name: 'Chairperson',
   },
   {
-    officeId: 4,
+    id: 4,
     type: 'Legislature',
     name: 'Senator',
   },

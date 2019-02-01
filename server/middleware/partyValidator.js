@@ -10,11 +10,51 @@
 const createPartyValidator = (req, res, next) => {
   const {
     name,
+    hqAddress,
+    logoUrl,
+    email,
+    phone,
   } = req.body;
   req.check('name', 'Political Party name is required').notEmpty();
   req.check('name', 'Party name should be more than 5 characters')
     .isLength({ min: 6 });
-  req.check('name', 'Party name should be valid').isAlphanumeric();
+  req.check('hqAddress', 'Address of headquarters required').notEmpty();
+  req.check('logoUrl', 'Party logo location is required').notEmpty();
+  req.check('email', 'Party email address is required').notEmpty().isEmail();
+  req.check('phone', 'Contact number is required').notEmpty().isNumeric();
+  // req.check('name', 'Party name should be valid').isString();
+  const errors = req.validationErrors();
+  const validationErrors = [];
+  if (errors) {
+    errors.map(err => validationErrors.push(err.msg));
+    return res.status(400).json({
+      errors: validationErrors,
+    });
+  }
+  let error = false;
+  const fieldValues = [name, hqAddress, logoUrl, email, phone];
+  fieldValues.map((fieldValue) => {
+    if (fieldValue.trim() === '') {
+      error = true;
+    }
+  });
+  if (error) {
+    return res.status(400).json({
+      message: 'Please fill in all fields',
+      error: true,
+    });
+  }
+  req.body.name = name.replace(/\s{2,}/g, ' ').trim();
+  return next();
+};
+
+const updatePartyValidator = (req, res, next) => {
+  const {
+    name,
+  } = req.body;
+  req.check('name', 'Political Party name is required').notEmpty();
+  req.check('name', 'Party name should be more than 5 characters')
+    .isLength({ min: 6 });
   const errors = req.validationErrors();
   const validationErrors = [];
   if (errors) {
@@ -40,4 +80,7 @@ const createPartyValidator = (req, res, next) => {
   return next();
 };
 
-export default createPartyValidator;
+export default {
+  createPartyValidator,
+  updatePartyValidator,
+};

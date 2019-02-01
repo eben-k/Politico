@@ -104,6 +104,13 @@ const partyDetails = {
     email: 'pp@gmail.com',
     phone: '23480000089',
   },
+  updateParty: {
+    name: 'FreeParty',
+    hqAddress: '40 Hanson Street, Las Palmas',
+    logoUrl: 'xxxx.com',
+    email: 'pp@gmail.com',
+    phone: '23480000089',
+  },
 
 };
 

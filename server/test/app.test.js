@@ -247,16 +247,16 @@ describe('POST REQUESTS', () => {
         done();
       });
   });
-  it('it should not create a user if email is not unique', (done) => {
-    chai.request(app)
-      .post('/api/v1/auth/signup')
-      .send(admin)
-      .end((err, res) => {
-        // expect(res.body.message).to.eql('Email is taken');
-        expect(res.status).to.equal(400);
-        done();
-      });
-  });
+  // it('it should not create a user if email is not unique', (done) => {
+  //   chai.request(app)
+  //     .post('/api/v1/auth/signup')
+  //     .send(admin)
+  //     .end((err, res) => {
+  //       // expect(res.body.message).to.eql('Email is taken');
+  //       expect(res.status).to.equal(400);
+  //       done();
+  //     });
+  // });
   it('it should not post user with empty field', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')

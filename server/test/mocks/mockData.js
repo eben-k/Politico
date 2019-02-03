@@ -26,6 +26,7 @@ const userDetails = {
     email: 'adane@gmail.com',
     passportUrl: 'admin',
     isAdmin: false,
+    password: 'hgjjtkklf',
   },
   newUser: {
     id: 5,

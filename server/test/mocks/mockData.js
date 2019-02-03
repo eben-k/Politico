@@ -39,10 +39,10 @@ const userDetails = {
   },
   emptyUserField: {
     firstname: '',
-    lastname: 'Law',
+    lastname: '',
     phoneNumber: '',
-    email: 'adane@gmail.com',
-    passportUrl: 'admin',
+    email: '',
+    passportUrl: '',
     isAdmin: false,
   },
 

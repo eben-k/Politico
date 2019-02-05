@@ -7,6 +7,7 @@ import UserController from '../database/controller/usersController';
 import UserValidator from '../database/middleware/userValidator';
 import authenticate from '../database/middleware/tokenVerify';
 import verifyAdmin from '../database/middleware/adminVerify';
+import createCandidate from '../database/controller/candidateController';
 
 const { createPartyValidator, updatePartyValidator } = PartyValidator;
 const {
@@ -27,6 +28,6 @@ route.delete('/parties/:partyId', authenticate, deleteParty);
 route.patch('/parties/:partyId', authenticate, updatePartyValidator, updateParty);
 route.post('/auth/signup', checkSignup, createUser);
 route.post('/auth/login', checkLogin, loginUser);
-
+route.post('/offices/:userId/register', authenticate, verifyAdmin, createCandidate);
 
 export default route;

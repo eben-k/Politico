@@ -26,10 +26,10 @@ const sampleOffice = (id, type, name) => {
   pool.query(query);
 };
 
-const sampleCandidate = (id, office, party, candidate) => {
+const sampleCandidate = (id, userId, office, party) => {
   const query = {
-    text: 'INSERT INTO candidates(id, office, party, candidate) VALUES($1, $2, $3, $4) RETURNING *',
-    values: [id, office, party, candidate],
+    text: 'INSERT INTO candidates(id, userId, office, party) VALUES($1, $2, $3, $4) RETURNING *',
+    values: [id, userId, office, party],
   };
   pool.query(query);
 };

@@ -42,13 +42,13 @@ const sampleVote = (id, createdBy, office, candidate) => {
   pool.query(query);
 };
 
-const samplePetition = (id, createdBy, office, body) => {
-  const query = {
-    text: 'INSERT INTO petitions(id, createdBy, office, body) VALUES($1, $2, $3, $4) RETURNING *',
-    values: [id, createdBy, office, body],
-  };
-  pool.query(query);
-};
+// const samplePetition = (id, createdBy, office, body) => {
+//   const query = {
+//     text: 'INSERT INTO petitions(id, createdBy, office, body) VALUES($1, $2, $3, $4) RETURNING *',
+//     values: [id, createdBy, office, body],
+//   };
+//   pool.query(query);
+// };
 
 sampleUser(1, 'admin', 'admin', 'admin@gmail.com', '233334455', 'admin.admin', true, 'adminns');
 sampleUser(2, 'chidimma', 'chidimma', 'chidimma@gmail.com', '458688894', 'chidimma.admin', false, 'dhgjfjjdj');
@@ -70,5 +70,5 @@ sampleVote(1, 2, 1, 3);
 sampleVote(2, 3, 2, 2);
 sampleVote(3, 2, 3, 1);
 
-samplePetition(1, 2, 1, 'overvoting concerns');
-samplePetition(2, 3, 2, 'invalid voters');
+// samplePetition(1, 2, 1, 'overvoting concerns');
+// samplePetition(2, 3, 2, 'invalid voters');

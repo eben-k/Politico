@@ -63,6 +63,7 @@ describe('Users Endpoint API Test', () => {
   });
   describe('Political Parties', () => {
     it.skip('should list ALL Political Parties on /parties GET', (done) => {
+      console.log('###', authToken2);
       chai.request(app)
         .get('/api/v1/parties')
         .set({ Authorization: authToken2 })
@@ -239,7 +240,7 @@ describe('Users Endpoint API Test', () => {
   });
 
   describe('POST REQUESTS', () => {
-    it('it should not login a user with wrong credential', (done) => {
+    it.skip('it should not login a user with wrong credential', (done) => {
       chai.request(app)
         .post('/api/v1/auth/login')
         .send(wrongPassword)
@@ -250,7 +251,7 @@ describe('Users Endpoint API Test', () => {
           done();
         });
     });
-    it('it should login a valid user', (done) => {
+    it.skip('it should login a valid user', (done) => {
       chai.request(app)
         .post('/api/v1/auth/login')
         .send(admin)
@@ -271,7 +272,7 @@ describe('Users Endpoint API Test', () => {
     //       done();
     //     });
     // });
-    it('it should not post user with empty field', (done) => {
+    it.skip('it should not post user with empty field', (done) => {
       chai.request(app)
         .post('/api/v1/auth/signup')
         .send(emptyUserField)
@@ -283,7 +284,7 @@ describe('Users Endpoint API Test', () => {
           done();
         });
     });
-    it('it should not login user with empty field', (done) => {
+    it.skip('it should not login user with empty field', (done) => {
       chai.request(app)
         .post('/api/v1/auth/login')
         .send(emptyUserField)
@@ -293,7 +294,7 @@ describe('Users Endpoint API Test', () => {
           done();
         });
     });
-    it('it should not login user that does not exist', (done) => {
+    it.skip('it should not login user that does not exist', (done) => {
       chai.request(app)
         .post('/api/v1/auth/login')
         .send({ email: 'add@gmail.com', password: 'ijeomaa' })
@@ -303,7 +304,7 @@ describe('Users Endpoint API Test', () => {
           done();
         });
     });
-    it('it should not create user with spaces in the field', (done) => {
+    it.skip('it should not create user with spaces in the field', (done) => {
       chai.request(app)
         .post('/api/v1/auth/signup')
         .send(spacedUserField)

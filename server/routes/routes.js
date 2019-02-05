@@ -7,6 +7,9 @@ import UserController from '../database/controller/usersController';
 import UserValidator from '../database/middleware/userValidator';
 import authenticate from '../database/middleware/tokenVerify';
 import verifyAdmin from '../database/middleware/adminVerify';
+import createCandidate from '../database/controller/candidateController';
+import VoteController from '../database/controller/voteController';
+
 
 const { createPartyValidator, updatePartyValidator } = PartyValidator;
 const {
@@ -15,6 +18,7 @@ const {
 const { getAllOffices, getOffice, addOffice } = OfficeController;
 const { createUser, loginUser } = UserController;
 const { checkSignup, checkLogin } = UserValidator;
+const { castBallot, getResult } = VoteController;
 const route = express.Router();
 
 route.get('/parties', authenticate, getAllParties);
@@ -27,6 +31,8 @@ route.delete('/parties/:partyId', authenticate, deleteParty);
 route.patch('/parties/:partyId', authenticate, updatePartyValidator, updateParty);
 route.post('/auth/signup', checkSignup, createUser);
 route.post('/auth/login', checkLogin, loginUser);
-
+route.post('/offices/:userId/register', authenticate, verifyAdmin, createCandidate);
+route.post('/votes', authenticate, castBallot);
+route.get('/offices/:officeId/result', authenticate, getResult);
 
 export default route;

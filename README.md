@@ -34,7 +34,7 @@ Politico enables citizens give their mandate to politicians running for differen
 * Admin can delete a political party
 * Admin can add a political office
 * Politician can express interest to run for office
-* Citizens can exercise their franchie by voting
+* Citizens can exercise their franchise by voting
 * Users can view personal and election records 
 
 ## How To Use ##
@@ -58,6 +58,20 @@ To clone and run this application, you must have [Git] and [Node.js] (with npm f
 * Test code by running npm test after installation
 
 ### API Endpoints ###
+`POST -> https://politico-io.herokuapp.com/api/v1/offices`
+`GET  -> https://politico-io.herokuapp.com/api/v1/offices`
+`GET  -> https://politico-io.herokuapp.com/api/v1/offices/:officeId`
+`POST -> https://politico-io.herokuapp.com/api/v1/parties`  
+`GET  -> https://politico-io.herokuapp.com/api/v1/parties`
+`GET  -> https://politico-io.herokuapp.com/api/v1/parties/partyId`
+`GET  -> https://politico-io.herokuapp.com/api/v1/offices/:officeId/result`
+`POST -> https://politico-io.herokuapp.com/api/v1/auth/signup`
+`POST -> https://politico-io.herokuapp.com/api/v1/auth/login`
+`POST -> https://politico-io.herokuapp.com/api/v1/offices/:userId/register`
+`POST -> https://politico-io.herokuapp.com/api/v1/votes`
+
+## Documentation ##
+[API Documentation](https://documenter.getpostman.com/view/5772810/RztoLnbw)
 
 ## Author ##
 Eben Ennim

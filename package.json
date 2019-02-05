@@ -6,9 +6,13 @@
   "scripts": {
     "start": "node dist/app.js",
     "start:dev": "nodemon --exec babel-node server/app.js",
-    "test": "mocha --compilers js:babel-register server/test --exit",
+    "test": "npm run create-table && nyc mocha --timeout 10000 --compilers js:babel-register server/test --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "build": "rm -rf dist && babel server -d dist --presets=env",
+    "droptable": "babel-node server/database/models/dropTables",
+    "create-table": " npm run droptable && babel-node server/database/models/tables && npm run seed",
+    "seed": "babel-node server/database/models/seed",
+    "babel-node": "babel-node --presets=env",
     "heroku-postbuild": "npm run build"
   },
   "repository": {
@@ -22,9 +26,13 @@
   },
   "homepage": "https://github.com/eben-k/Politico#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "express-validator": "^5.3.1"
+    "express-validator": "^5.3.1",
+    "jsonwebtoken": "^8.4.0",
+    "pg": "^7.8.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

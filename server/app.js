@@ -1,7 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import expressValidator from 'express-validator';
+import dotenv from 'dotenv';
 import route from './routes/routes';
+
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -19,6 +21,7 @@ app.use('*', (req, res) => {
   });
 });
 
+dotenv.config();
 
 app.listen(port);
 

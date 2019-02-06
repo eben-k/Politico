@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import expressValidator from 'express-validator';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import route from './routes/routes';
 
 
@@ -12,6 +13,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
+app.use(cors());
 
 app.use('/api/v1', route);
 

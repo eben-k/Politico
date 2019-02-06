@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Politico | Sign Up</title>
+        <link rel="stylesheet" type="text/css" href="/Politico-client/css/style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Muli:200i,400" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    </head>
+    <body>
+        <header id="header" >
+            <nav>
+                <a href="index.html"> <div class="logo"><i class="fab fa-pinterest-p"></i>olitico </a>
+                <ul>
+                    <li><a href="admin.html">Government</a></li>
+                    <li><a href="#">Services</a></li>
+                   
+                    
+                </ul>
+            </nav>
+        </header>
+         <section class="signup-page">
+                <div class="signup-form">
+                        <h1 class="login-heading">Sign Up To Politico</h1>
+                        <div class="form">
+                            <form id="form" class="signup"  action="">
+                                <div>
+                                    <input id="firstname" type="text" placeholder="First Name" >
+                                    <div id="firstnameError" class="error"></div>
+                                </div>
+                                <div>
+                                    <input id="lastname" type="text" placeholder="Last Name" >
+                                    <div id="lastnameError" class="error"></div>
+                                </div>
+                                <div>
+                                    <input id="email" type="text" placeholder="Email" >
+                                    <div id="emailError" class="error"></div>
+                                </div>
+                                <div>
+                                    <input id="phone" type="tel" placeholder="Phone Number" >
+                                    <div id="phoneError" class="error"></div>
+                                </div>
+                                <div>
+                                    <input id="passport" type="text" placeholder="PassportUrl" >
+                                    <div id="passportError" class="error"></div>
+                                </div>
+                                <div >
+                                    <input id ="password" type="password" placeholder="Password" >
+                                    <div id="password-error" class="error"></div>
+                                </div>
+                                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                                <div class="form">
+                                    <div id="signup-error"></div>
+                                    <div id="signup-success"></div>
+                                </div>
+                                <div>
+                                    <div class="loader" id="spinner"></div>
+                                </div>
+                                <div>
+                                    <input id="submit-button" type="submit" value="SIGN UP">
+                                </div>
+                                <!-- <div>
+                                    <p>Already have an account? <a href="login.html">Log in Here</a></p>
+                                </div> -->
+                                
+                            </form>
+                        </div>
+                    </div>
+         </section>
+        <footer id="footer">
+            <p>Copyright © 2019 Politico. All rights reserved.</p>            
+        </footer>
+        <script src="/Politico-client/scripts/signup.js"></script>
+        
+    </body>
+</html>

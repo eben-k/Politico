@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Politico | Admin</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Muli:200i,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="css/slider.css"> -->
+    <link rel="stylesheet" href="css/modal.css">
+</head>
+
+<body>
+    <header id="header">
+        <nav>
+            <a href="index.html">
+                <div class="logo"><i class="fab fa-pinterest-p"></i>olitico
+            </a>
+            <ul>
+
+                <li><a href="#"><i class="fas fa-user-lock"></i></i> Admin</a></li>
+                <li><a href="index.html"><i class="fas fa-sign-in-alt"></i> Logout </a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="page" class="admin-page">
+
+        <div class="dashboard card col-2">
+            <h3> Dashboard</h3>
+            <p class><a href="admin.html">Political Parties</a></p>
+            <hr>
+            <p class="active"><a href="#">Government Offices</a></p>
+            <hr>
+            <p><a href="politician.html">Candidates</a></p>
+
+        </div>
+        <div class="col-8">
+            <div class="col-11">
+                <!-- <p class="text-left">Search by <select name="category" id="">
+                        <option value="all">All</option>
+                        <option value="Parties">Parties</option>
+                        <option value="People">Candidates</option>
+                    </select></p> -->
+                <!-- create political party modal -->
+                <button onClick="toggleModal()" class="trigger text button">Add Office</button>
+                <div class="modal-panel">
+                    <div class="content">
+                        <span class="close" onClick="toggleModal()">×</span>
+
+                        <h1 class="login-heading">Add Office</h1>
+                        <div class="form">
+                            <form class="login" action="">
+                                <div>
+                                    <input type="text" placeholder="Office" required>
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="Requirements" required>
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="Description" required>
+                                </div>
+
+
+                                <div>
+                                    <input type="submit" value="ADD">
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- delete political party modal -->
+            <div class="delete">
+                <div class="content">
+                    <span class="close" onClick="toggleModalDelete()">×</span>
+
+
+                    <div class="card">
+                        <div class="product-detail">
+                            <h3 style="text-align: center"><a href="#">Remove this Office?</a> </h3>
+                            <p class="text-left"><a href=""><button class="button">Cancel</button></a></p>
+                            <p class="text"> <a href=""><button class="button delete-btn">Delete</button></a></p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- political party list -->
+            <div class="card col-3">
+
+                <img src="img/politics-2426940__340.jpg" alt="Avatar">
+                <div class="product-detail">
+                    <h3 style="text-align: center"><a href="#">President</a> </h3>
+
+                    <p class="text">
+                        <!-- <i class="far fa-edit trigger" onClick="toggleModalEdit()"></i> -->
+                        <i class="far fa-trash-alt trigger" onClick="toggleModalDelete()"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="card col-3">
+
+
+                <img src="img/politics-2361943_960_720.jpg" alt="Avatar">
+                <div class="product-detail">
+                    <h3 style="text-align: center"><a href="#">Senator</a> </h3>
+
+                    <p class="text">
+                        <!-- <i class="far fa-edit trigger" onClick="toggleModalEdit()"></i> -->
+                        <i class="far fa-trash-alt trigger" onClick="toggleModalDelete()"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="card col-3">
+
+
+                <img src="img/politics-2426940__340.jpg" alt="Avatar">
+                <div class="product-detail">
+                    <h3 style="text-align: center"><a href="#">Governor</a> </h3>
+
+                    <p class="text">
+                        <!-- <i class="far fa-edit trigger" onClick="toggleModalEdit()"></i> -->
+                        <i class="far fa-trash-alt trigger" onClick="toggleModalDelete()"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="card col-3">
+
+
+                <img src="img/politics-2361943_960_720.jpg" alt="Avatar">
+                <div class="product-detail">
+                    <h3 style="text-align: center"><a href="#">Member of Parliament</a> </h3>
+
+                    <p class="text">
+                        <!-- <i class="far fa-edit trigger" onClick="toggleModalEdit()"></i> -->
+                        <i class="far fa-trash-alt trigger" onClick="toggleModalDelete()"></i>
+                    </p>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </section>
+    <footer id="footer" class="col-12">
+        <p>Copyright © 2019 Politico. All rights reserved.</p>
+    </footer>
+
+    <script src="js/modals.js"></script>
+</body>
+
+</html>

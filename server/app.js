@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(cors());
+app.use(express.static('UI'));
 
 app.use('/api/v1', route);
 

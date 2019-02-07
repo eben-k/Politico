@@ -33,7 +33,7 @@ html{
   }
   nav div .logo {
      /* display: inline-block; */
-     font-size: 2em;
+     font-size: 1em;
   }
 
   nav li {
@@ -73,7 +73,7 @@ html{
   .login-form{
     margin: 30px auto 0 auto;
     width: 400px;
-    box-shadow: 1px 2px 5px 3px #9b8b85;
+    box-shadow: 1px 2px 3px 3px lightgray;
     padding: 10px 0 30px 0;
     background: white;
   }
@@ -90,7 +90,7 @@ html{
   .signup-form{
     margin: 30px auto 0 auto;
     width: 400px;
-    box-shadow: 1px 2px 5px 3px #9b8b85;
+    box-shadow: 1px 2px 3px 3px lightgray;
     padding: 10px 0 30px 0;
     background: white;
   }
@@ -165,10 +165,11 @@ html{
   width: 100%;
   height: 400px;
   margin:0 0 0 0;
-  background-image: url("img/politics-2361943_960_720.jpg");
+  background-image: url("https://cdn.pixabay.com/photo/2015/05/20/06/00/silhouette-774835__340.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   padding-top: 10px;
+  background-color: rgba(51, 110, 123, 1);
   }
   .welcome{
     /* display:inline-block; */
@@ -177,6 +178,7 @@ html{
     text-align: center;
     padding: 50px;
     margin: 20px auto;
+    color: black;
   }
   /* .welcome-img img{
     display:inline-block;
@@ -374,7 +376,7 @@ html{
 
   /* ************  Badges  *************** */
 
-  .ribbon {
+  /* .ribbon {
     width: 120px;
     height: 120px;
     overflow: hidden;
@@ -423,7 +425,7 @@ html{
     right: -25px;
     top: 30px;
     transform: rotate(-45deg);
-  }
+  } */
 
 
 
@@ -439,7 +441,7 @@ html{
     }
   }
 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 400px) {
       nav{
           text-align: center
       }

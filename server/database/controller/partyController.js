@@ -158,8 +158,8 @@ const updateParty = (req, res) => {
     .then((found) => {
       if (found.rowCount) {
         pool.query({
-          text: 'SELECT name FROM Products WHERE LOWER(name) = LOWER($1)',
-          value: [name],
+          text: 'SELECT name FROM parties WHERE LOWER(name) = LOWER($1)',
+          values: [name],
         }).then((foundOne) => {
           if (foundOne.rowCount) {
             return res.status(409).json({
@@ -168,8 +168,8 @@ const updateParty = (req, res) => {
             });
           }
           const query = {
-            text: 'UPDATE parties SET name = $1, WHERE id = $2 RETURNING *',
-            values: [name],
+            text: 'UPDATE parties SET name = $1 WHERE id = $2 RETURNING *',
+            values: [name, partyId],
           };
           pool.query(query).then((party) => {
             partyDetails = [party.rows[0]];

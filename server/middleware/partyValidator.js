@@ -31,6 +31,7 @@ const createPartyValidator = (req, res, next) => {
       errors: validationErrors,
     });
   }
+
   let error = false;
   const fieldValues = [name, hqAddress, logoUrl, email, phone];
   fieldValues.map((fieldValue) => {
@@ -40,11 +41,15 @@ const createPartyValidator = (req, res, next) => {
   });
   if (error) {
     return res.status(400).json({
-      message: 'Please fill in all fields',
-      error: true,
+      status: 400,
+      error: 'Please fill in all fields',
     });
   }
   req.body.name = name.replace(/\s{2,}/g, ' ').trim();
+  req.body.hqAddress = hqAddress.replace(/\s{2,}/g, ' ').trim();
+  req.body.logoUrl = logoUrl.replace(/\s{2,}/g, ' ').trim();
+  req.body.email = email.replace(/\s{2,}/g, ' ').trim();
+  req.body.phone = phone.replace(/\s{2,}/g, ' ').trim();
   return next();
 };
 

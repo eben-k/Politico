@@ -2,19 +2,20 @@ import pool from '../models/configDb';
 
 const castBallot = (req, res) => {
   const {
-    createdBy, office, candidate,
+    office, candidate,
   } = req.body;
-  const duplicate = {};
-  const userQuery = {
-    text: 'select * from users where id = $1',
-    values: [createdBy],
-  };
-  pool.query(userQuery)
-    .then((user) => {
-      if (user.rowCount === 0) {
-        duplicate.userNotExist = 'userId does not exist';
-      }
-    });
+  const user = req.authData.id;
+  const twinValue = {};
+  // const userQuery = {
+  //   text: 'select * from users where id = $1',
+  //   values: [createdBy],
+  // };
+  // pool.query(userQuery)
+  //   .then((user) => {
+  //     if (user.rowCount === 0) {
+  //       twinValue.userNotExist = 'userId does not exist';
+  //     }
+  //   });
   const officeQuery = {
     text: 'select * from offices where id = $1',
     values: [office],
@@ -22,7 +23,7 @@ const castBallot = (req, res) => {
   pool.query(officeQuery)
     .then((officeData) => {
       if (officeData.rowCount === 0) {
-        duplicate.officeNotExist = 'officeId does not exist';
+        twinValue.officeNotExist = 'officeId does not exist';
       }
     });
   const candidateQuery = {
@@ -32,19 +33,29 @@ const castBallot = (req, res) => {
   pool.query(candidateQuery)
     .then((candidateData) => {
       if (candidateData.rowCount === 0) {
-        duplicate.candidateNotExist = 'candidate does not exist';
+        twinValue.candidateNotExist = 'candidate does not exist';
       }
-      if (JSON.stringify(duplicate) !== '{}') {
+    });
+  const doubleVoteQuery = {
+    text: 'SELECT * FROM votes WHERE office = $1 AND candidate = $2',
+    values: [office, candidate],
+  };
+  pool.query(doubleVoteQuery)
+    .then((voteData) => {
+      if (voteData.rowCount > 0) {
+        twinValue.voteNotExist = 'You cannot vote more than once for same candidate and office!';
+      }
+      if (JSON.stringify(twinValue) !== '{}') {
         return res.status(409)
           .json({
             status: 409,
-            error: duplicate,
+            error: twinValue,
           });
       }
     });
   const voteQuery = {
     text: 'insert into votes (createdBy, office, candidate) values ($1, $2, $3) returning *',
-    values: [createdBy, office, candidate],
+    values: [user, office, candidate],
   };
   pool.query(voteQuery)
     .then((vote) => {
@@ -57,9 +68,9 @@ const castBallot = (req, res) => {
           });
       }
     })
-    .catch(error => res.status(500)
+    .catch(error => res.status(400)
       .json({
-        status: 500,
+        status: 400,
         data: [error.message],
       }));
 };
@@ -76,22 +87,21 @@ const getResult = (req, res) => {
         res.status(201)
           .json({
             status: 404,
-            error: 'office does not exist, please check your input and try again ',
+            error: 'office does not exist, please check your input',
           });
       }
     });
   const resultQuery = {
-    text: 'select office, candidate, count(candidate) as results from votes where votes.office = $1 group by votes.candidate, votes.office',
+    text: 'select office, candidate, count(candidate) as results from votes where office = $1 group by candidate, office',
     values: [officeId],
   };
   pool.query(resultQuery)
     .then((data) => {
-      if (data.rowCount !== 0) {
+      if (data.rowCount > 0) {
         const result = data.rows[0];
         res.status(200)
           .json({
             status: 200,
-            message: 'Election results for this office',
             data: result,
           });
       }

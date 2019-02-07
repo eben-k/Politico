@@ -4,7 +4,7 @@ const createCandidate = (req, res) => {
   const {
     office, userId, party,
   } = req.body;
-  const duplicate = {};
+  const twinValue = {};
   const userQuery = {
     text: 'SELECT * FROM users WHERE id = $1',
     values: [userId],
@@ -20,20 +20,20 @@ const createCandidate = (req, res) => {
   pool.query(userQuery)
     .then((details) => {
       if (details.rowCount === 0) {
-        duplicate.userNotExist = 'userId does not exist';
+        twinValue.userNotExist = 'userId does not exist';
       }
     });
 
   pool.query(officeQuery)
     .then((details) => {
       if (details.rowCount === 0) {
-        duplicate.officeNotExist = 'officeId does not exist';
+        twinValue.officeNotExist = 'officeId does not exist';
       }
     });
   pool.query(partyQuery)
     .then((details) => {
       if (details.rowCount === 0) {
-        duplicate.partyNotExist = 'partyId does not exist';
+        twinValue.partyNotExist = 'partyId does not exist';
       }
     });
   const query = {
@@ -51,10 +51,10 @@ const createCandidate = (req, res) => {
           });
       }
     })
-    .catch(error => res.status(500)
+    .catch(error => res.status(400)
       .json({
-        status: 500,
-        data: [error.message],
+        status: 400,
+        error: [error.message],
       }));
 };
 export default createCandidate;

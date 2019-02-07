@@ -7,21 +7,21 @@ const Auth = {
   hashedPassword(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   },
-  verifyPassword(hashedPassword, password) {
+  verifyPassword(password, hashedPassword) {
     return bcrypt.compareSync(password, hashedPassword);
   },
   validEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
   },
   createToken(userDetail) {
-    const {
-      id, email, passportURL, isAdmin,
-    } = userDetail;
-    const authDetail = {
-      id, email, passportURL, isAdmin,
-    };
+    // const {
+    //   id, email, isAdmin,
+    // } = userDetail;
+    // const authDetail = {
+    //   id, email, isAdmin,
+    // };
     const token = jwt.sign(
-      authDetail, secret, { expiresIn: '10hrs' },
+      userDetail, secret, { expiresIn: '10hrs' },
     );
     return token;
   },

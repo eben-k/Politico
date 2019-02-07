@@ -1,7 +1,7 @@
 # Politico #
 
 ## Build Status ##
-[![Coverage Status](https://coveralls.io/repos/github/eben-k/Politico/badge.svg?branch=unit-tests-163481759)](https://coveralls.io/github/eben-k/Politico?branch=unit-tests-163481759)
+[![Coverage Status](https://coveralls.io/repos/github/eben-k/Politico/badge.svg?branch=ft-user-login-163587254)](https://coveralls.io/github/eben-k/Politico?branch=ft-user-login-163587254)
 [![Build Status](https://travis-ci.com/eben-k/Politico.svg?branch=develop)](https://travis-ci.com/eben-k/Politico)
 
 ## Introduction ##

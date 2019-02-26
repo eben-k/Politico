@@ -37,10 +37,11 @@ const createOfficeValidator = (req, res, next) => {
   });
   if (error) {
     return res.status(400).json({
-      message: 'Please fill in all fields',
-      error: true,
+      status: 400,
+      error: 'Please fill in all fields',
     });
   }
+  req.body.type = type.replace(/\s{2,}/g, ' ').trim();
   req.body.name = name.replace(/\s{2,}/g, ' ').trim();
   return next();
 };

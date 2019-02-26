@@ -11,31 +11,32 @@ const createUser = (req, res) => {
       error: 'Please check required fields',
     });
   }
-  let userDetail;
+  // let userDetail;
   const hashedPassword = Auth.hashedPassword(password);
   pool.query({ text: 'SELECT email from users where email = $1', values: [email] })
     .then((found) => {
-      // if (!email || !Auth.validEmail(email)) {
-      //   return res.status(400).json({
-      //     status: 400,
-      //     error: 'Please enter valid email address',
-      //   });
-      // }
       if (found.rowCount === 0) {
         const query = {
           text: 'INSERT INTO users(firstname, lastname, email, phoneNumber, passportUrl, password) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
           values: [firstname, lastname, email, phoneNumber, passportUrl, hashedPassword],
         };
         pool.query(query).then((user) => {
-          userDetail = [user.rows[0]];
-          const tokenValue = Auth.createToken(userDetail);
+          const userDetail = user.rows[0];
+          const authDetail = {
+            id: userDetail.id,
+            isAdmin: userDetail.isadmin,
+          };
+          const tokenValue = Auth.createToken(authDetail);
 
           return res.status(201).json({
             status: 201,
-            data: {
+            data: [{
               token: tokenValue,
-              user: userDetail,
-            },
+              user: {
+                fullName: `${userDetail.firstname} ${userDetail.lastname}`,
+                isAdmin: userDetail.isadmin,
+              },
+            }],
           });
         });
       } else {
@@ -49,21 +50,36 @@ const createUser = (req, res) => {
 
 const loginUser = (req, res) => {
   const { email, password } = req.body;
-  let userDetail;
+  // let userDetail;
   const hashedPassword = Auth.hashedPassword(password);
   const query = { text: 'SELECT * FROM users Where email = $1', values: [email] };
   pool.query(query).then((user) => {
     if (user.rowCount) {
-      userDetail = [user.rows[0]];
-      if (hashedPassword) {
-        const tokenValue = Auth.createToken(userDetail);
-        return res.status(200).json({
-          status: 200,
-          data: {
-            token: tokenValue,
-            user: userDetail,
-          },
-        });
+      const userDetail = user.rows[0];
+      // console.log(userDetail);
+      if (Auth.verifyPassword(password, userDetail.password)) {
+        // const {
+        //   id, firstname, lastname, isAdmin,
+        // } = userDetail;
+        // console.log(userDetail);
+        const authDetail = {
+          id: userDetail.id,
+          isAdmin: userDetail.isadmin,
+        };
+        // console.log(authDetail);
+        if (hashedPassword) {
+          const tokenValue = Auth.createToken(authDetail);
+          return res.status(200).json({
+            status: 200,
+            data: {
+              token: tokenValue,
+              user: {
+                fullName: `${userDetail.firstname} ${userDetail.lastname}`,
+                isAdmin: userDetail.isadmin,
+              },
+            },
+          });
+        }
       }
       return res.status(401).json({
         status: 401,
